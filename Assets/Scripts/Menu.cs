@@ -2,31 +2,42 @@
 using System.Collections;
 
 public class Menu : MonoBehaviour {
+	
+	enum Fade {In, Out}
+	float fadeTime = 4.0f;
 
+	GameObject gameCamera;
+	AudioSource music;
+	
 	// Use this for initialization
 	void Start () {
+		gameCamera = GameObject.Find ("Main Camera");
+		music = gameCamera.GetComponent<AudioSource> ();
+		music.enabled = true;
+		music.volume = 1.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			//fade intro
-			FadeMusic(4);
+			//StartCoroutine(FadeMusic(fadeTime, Fade.Out));
+			//FadeMusic();
 
 			//load
 			Application.LoadLevel("Scene1");
 		}
 	}
+	
+	//si alguien hace que esto funcione me avisa >_>
+	private void FadeMusic() {
+		float start = Time.time;
+		float elapsedTime = 0.0f;
 
-	private void FadeMusic(float seconds) {
-		float initialVolume = audio.volume;
-		float changingVolume;
-		float t = 0f;
-
-		while (t < 1) {
-			t += Time.deltaTime / seconds;
-			changingVolume = Mathf.Lerp(initialVolume, 0, t);
-			audio.volume = changingVolume;
-		}
+		do {
+			elapsedTime = Time.time - start;
+			music.volume = Mathf.Lerp (1.0f, 0.0f, elapsedTime / fadeTime);
+			//yield return null;
+		} while (elapsedTime < fadeTime);
 	}
 }
