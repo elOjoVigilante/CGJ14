@@ -1,7 +1,7 @@
 Shader "Hidden/Grayscale Effect" {
 Properties {
 	_MainTex ("Base (RGB)", 2D) = "white" {}
-	_RampTex ("Base (RGB)", 2D) = "grayscaleRamp" {}
+	_RampTex ("Base (RGB)", 2D) = "violetRamp" {}
     _EffectAmount ("Effect Amount", Range (0,1)) = 1.0
 }
 

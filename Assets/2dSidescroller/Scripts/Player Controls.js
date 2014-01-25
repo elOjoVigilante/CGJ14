@@ -104,6 +104,7 @@ if(Input.GetKey("q")){
    var changeCoins =  GameObject.FindGameObjectsWithTag ("coin");
    for (coin in changeCoins){
       coin.GetComponent(Coin).punish = !(coin.GetComponent(Coin).punish);
+      coin.renderer.material.color = Color.red;
    }
 }   
 #endif
