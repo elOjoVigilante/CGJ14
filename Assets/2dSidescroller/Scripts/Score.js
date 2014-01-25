@@ -16,13 +16,30 @@ transform.guiText.text = "COINS: " + totalCoins.ToString();
 }
 
 //This function is called when a coin sends us the message "getCoin" which is in the coin.js script.
-function getCoin () {
+function getCoin (n:int) {
 //once we receive the message from the coin, we play the sound we set when a coin is taken.
 audio.PlayOneShot(coinSound);
 //we add 1 to totalCoins
-totalCoins += 1;
+totalCoins += n;
 //then we resave the variable that we use to always save how many the player received while playing.
 PlayerPrefs.SetFloat("coins", totalCoins);
 //this updates the text in the top left corner again, just like in function Start()
 transform.guiText.text = "COINS: " + totalCoins.ToString();
+}
+
+function getPrize (n:int) {
+//once we receive the message from the coin, we play the sound we set when a coin is taken.
+audio.PlayOneShot(coinSound);
+//we add 1 to totalCoins
+totalCoins -= n;
+//then we resave the variable that we use to always save how many the player received while playing.
+PlayerPrefs.SetFloat("coins", totalCoins);
+//this updates the text in the top left corner again, just like in function Start()
+transform.guiText.text = "COINS: " + totalCoins.ToString();
+}
+
+function changeBg (color:Color){
+   var cam:GameObject;
+   cam = GameObject.Find("Main Camera");
+   cam.camera.backgroundColor = color;
 }

@@ -97,6 +97,15 @@ if (Physics.Raycast (transform.position - Vector3(0,0.25,0), Vector3(0,-1,0), hi
 		}
 	}
 }
+
+if(Input.GetKey("q")){
+   var cam:GameObject = GameObject.Find("Main Camera");
+   cam.camera.backgroundColor = Color.magenta;
+   var changeCoins =  GameObject.FindGameObjectsWithTag ("coin");
+   for (coin in changeCoins){
+      coin.GetComponent(Coin).punish = !(coin.GetComponent(Coin).punish);
+   }
+}   
 #endif
 
 #if UNITY_IOS
