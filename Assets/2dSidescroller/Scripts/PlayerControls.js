@@ -1,4 +1,7 @@
 #pragma strict
+var LooksSad:boolean = false;
+var LooksCalm:boolean = false;
+var LooksAngry:boolean = false;
 
 //how fast the player walks
 var walkSpeed:float = 14.0;
@@ -84,6 +87,20 @@ if(Input.GetKey("d")|| Input.GetKey("right")){
 }else{
 //use else to do the opposite of an if() statement. this stops the player if lets go of A or D
 rigidbody.velocity.x = 0.0;
+}
+
+if(Input.GetKey("q") && LooksSad){
+   var objs = GameObject.FindGameObjectsWithTag("Changeable");
+   for (obj in objs){
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
+   }
+}
+
+if(Input.GetKey("r")){
+   objs = GameObject.FindGameObjectsWithTag("Changeable");
+   for (obj in objs){
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).normal;
+   }    
 }
 
 //check to see if player is on terrain and can jump
