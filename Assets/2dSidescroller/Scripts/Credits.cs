@@ -19,7 +19,7 @@ public class Credits : MonoBehaviour {
 		music.enabled = true;
 		music.volume = 1.0f;
 
-		menuObject = GameObject.Find ("Menu");
+		menuObject = GameObject.Find ("Credits");
 		creditsPosition = menuObject.transform.position;
 		creditsPosition.y = -2.0f;
 		menuObject.transform.position = creditsPosition;
