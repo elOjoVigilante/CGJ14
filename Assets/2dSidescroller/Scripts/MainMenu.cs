@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
 			yield return null;
 		}
 		//load
-		Application.LoadLevel("Level 1");
+		Application.LoadLevel("Intro");
 	}
 }
 

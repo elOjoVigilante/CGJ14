@@ -1,6 +1,6 @@
 #pragma strict
-var LooksSad:boolean = false;
-var LooksCalm:boolean = false;
+var LooksSad:boolean = true;
+var LooksCalm:boolean = true;
 var LooksAngry:boolean = false;
 
 //how fast the player walks
@@ -19,47 +19,6 @@ private var jumpCounter:float = 0.0;
 function Update () {
 //jumpCounter becomes a timer.
 jumpCounter += Time.deltaTime;
-
-#if UNITY_WEBPLAYER
-//Keyboard Controls for web versions (Same as Standalone because they both deal with keyboard)
-//This checks to see if the player is pressing A or D. This is connected to the else{} statement below
-if(Input.GetKey("a") || Input.GetKey("d") || Input.GetKey("left") || Input.GetKey("right")){
-//If the player presses A, add velocity to move left.
-if(Input.GetKey("a") || Input.GetKey("left")){
-	if(rigidbody.velocity.x > 0){
-		rigidbody.velocity.x = 0;
-	}
-	if(rigidbody.velocity.x > -walkSpeed){
-		rigidbody.velocity.x -= 48*Time.deltaTime;
-	}
-}
-//if the player pressed D, add velocity to move right.
-if(Input.GetKey("d")|| Input.GetKey("right")){
-	if(rigidbody.velocity.x < 0){
-		rigidbody.velocity.x = 0;
-	}
-	if(rigidbody.velocity.x < walkSpeed){
-		rigidbody.velocity.x += 48*Time.deltaTime;
-	}
-}
-
-}else{
-//use else to do the opposite of an if() statement. this stops the player if lets go of A or D
-rigidbody.velocity.x = 0.0;
-}
-
-//check to see if player is on terrain and can jump
-if (Physics.Raycast (transform.position - Vector3(0,0.25,0), Vector3(0,-1,0), hit)) {
-	if(hit.transform.tag == "terrain" && hit.distance < 0.74 && Input.GetKey("space")){
-		rigidbody.velocity.y = jumpHeight;
-		//once jump counter hits a quarter of a second, it can play the sound again.
-		if(jumpCounter > 0.25){
-			audio.PlayOneShot(jumpSound);
-			jumpCounter = 0.0;
-		}
-	}
-}
-#endif
 
 #if UNITY_STANDALONE
 //Keyboard Controls for Mac, PC, and Linux builds. (Same as Webplayer because they both deal with keyboard)
@@ -102,16 +61,24 @@ if(Input.GetKey("q") && LooksAngry){
    GameObject.Find("Tint").GetComponent(Colorer).color = "red";   
 }
 
-if(Input.GetKey("w") && LooksSad){
+if(Input.GetKey("w")){
    objs = GameObject.FindGameObjectsWithTag("Changeable");
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
       obj.GetComponent(enemyFollow).sad = true;
    }
-   GameObject.Find("Tint").GetComponent(Colorer).color = "magenta";   
+   GameObject.Find("Tint").GetComponent(Colorer).color = "magenta";
+   var sadMusic = GameObject.Find("cama").GetComponent(AudioSource);
+   var currentMusic1 = GameObject.Find("Main Camera").GetComponent(AudioSource);   
+   
+   if (currentMusic1.clip != sadMusic.clip) {
+	   currentMusic1.Stop();
+	   currentMusic1.clip = sadMusic.clip;
+	   currentMusic1.Play();
+   }
 }
 
-if(Input.GetKey("e") && LooksCalm){
+if(Input.GetKey("e")){
    objs = GameObject.FindGameObjectsWithTag("Changeable");
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).calm;
@@ -122,6 +89,8 @@ if(Input.GetKey("e") && LooksCalm){
 
 if(Input.GetKey("r")){
    objs = GameObject.FindGameObjectsWithTag("Changeable");
+   var normalMusic = GameObject.Find("chimneyLow").GetComponent(AudioSource);
+   var currentMusic2 = GameObject.Find("Main Camera").GetComponent(AudioSource);
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).normal;
       obj.GetComponent(enemyFollow).angry = false;
@@ -133,6 +102,116 @@ if(Input.GetKey("r")){
    }
  
    GameObject.Find("Tint").GetComponent(Colorer).color = "black"; 
+   
+   if (currentMusic2.clip != normalMusic.clip) {
+	   currentMusic2.Stop();
+	   currentMusic2.clip = normalMusic.clip;
+	   currentMusic2.Play();
+   }
+}
+
+//check to see if player is on terrain and can jump
+if (Physics.Raycast (transform.position - Vector3(0,0.25,0), Vector3(0,-1,0), hit)) {
+    var player:GameObject = GameObject.Find("Player");
+	if(hit.transform.tag == "terrain" && hit.distance < 0.74*player.renderer.bounds.size.y && Input.GetKey("space")){
+		rigidbody.velocity.y = jumpHeight;
+		//once jump counter hits a quarter of a second, it can play the sound again.
+		if(jumpCounter > 0.25){
+			audio.PlayOneShot(jumpSound);
+			jumpCounter = 0.0;
+		}
+	}
+}
+#endif
+
+#if UNITY_WEBPLAYER
+//Keyboard Controls for Mac, PC, and Linux builds. (Same as Webplayer because they both deal with keyboard)
+//This checks to see if the player is pressing A or D. This is connected to the else{} statement below
+if(Input.GetKey("a") || Input.GetKey("d") || Input.GetKey("left") || Input.GetKey("right")){
+//If the player presses A, add velocity to move left.
+if(Input.GetKey("a") || Input.GetKey("left")){
+	if(rigidbody.velocity.x > 0){
+		rigidbody.velocity.x = 0;
+	}
+	if(rigidbody.velocity.x > -walkSpeed){
+		rigidbody.velocity.x -= 48*Time.deltaTime;
+	}
+}
+//if the player pressed D, add velocity to move right.
+if(Input.GetKey("d")|| Input.GetKey("right")){
+	if(rigidbody.velocity.x < 0){
+		rigidbody.velocity.x = 0;
+	}
+	if(rigidbody.velocity.x < walkSpeed){
+		rigidbody.velocity.x += 48*Time.deltaTime;
+	}
+}
+
+}else{
+//use else to do the opposite of an if() statement. this stops the player if lets go of A or D
+rigidbody.velocity.x = 0.0;
+}
+
+if(Input.GetKey("q") && LooksAngry){
+   var objs = GameObject.FindGameObjectsWithTag("Changeable");
+   for (obj in objs){
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).angry;
+      obj.GetComponent(enemyFollow).angry = true;
+   }
+   var shows = GameObject.FindGameObjectsWithTag("Show");
+   for (show in shows){
+      show.GetComponent(showManager).show = true;
+   }
+   GameObject.Find("Tint").GetComponent(Colorer).color = "red";   
+}
+
+if(Input.GetKey("w")){
+   objs = GameObject.FindGameObjectsWithTag("Changeable");
+   for (obj in objs){
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
+      obj.GetComponent(enemyFollow).sad = true;
+   }
+   GameObject.Find("Tint").GetComponent(Colorer).color = "magenta";
+   var sadMusic = GameObject.Find("cama").GetComponent(AudioSource);
+   var currentMusic1 = GameObject.Find("Main Camera").GetComponent(AudioSource);   
+   
+   if (currentMusic1.clip != sadMusic.clip) {
+	   currentMusic1.Stop();
+	   currentMusic1.clip = sadMusic.clip;
+	   currentMusic1.Play();
+   }
+}
+
+if(Input.GetKey("e")
+   objs = GameObject.FindGameObjectsWithTag("Changeable");
+   for (obj in objs){
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).calm;
+      obj.GetComponent(enemyFollow).calm = true;
+   }
+   GameObject.Find("Tint").GetComponent(Colorer).color = "blue";   
+}
+
+if(Input.GetKey("r")){
+   objs = GameObject.FindGameObjectsWithTag("Changeable");
+   var normalMusic = GameObject.Find("chimneyLow").GetComponent(AudioSource);
+   var currentMusic2 = GameObject.Find("Main Camera").GetComponent(AudioSource);
+   for (obj in objs){
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).normal;
+      obj.GetComponent(enemyFollow).angry = false;
+   }    
+   
+   shows = GameObject.FindGameObjectsWithTag("Show");
+   for (show in shows){
+      show.GetComponent(showManager).show = false;
+   }
+ 
+   GameObject.Find("Tint").GetComponent(Colorer).color = "black"; 
+   
+   if (currentMusic2.clip != normalMusic.clip) {
+	   currentMusic2.Stop();
+	   currentMusic2.clip = normalMusic.clip;
+	   currentMusic2.Play();
+   }
 }
 
 //check to see if player is on terrain and can jump
