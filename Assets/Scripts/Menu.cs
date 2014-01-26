@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class Menu : MonoBehaviour {
-	
-	enum Fade {In, Out}
+
 	float fadeTime = 4.0f;
 
 	GameObject gameCamera;
@@ -21,23 +20,17 @@ public class Menu : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			//fade intro
-			//StartCoroutine(FadeMusic(fadeTime, Fade.Out));
-			//FadeMusic();
-
-			//load
-			Application.LoadLevel("Scene1");
+			StartCoroutine(FadeMusic());
 		}
 	}
 	
 	//si alguien hace que esto funcione me avisa >_>
-	private void FadeMusic() {
-		float start = Time.time;
-		float elapsedTime = 0.0f;
-
-		do {
-			elapsedTime = Time.time - start;
-			music.volume = Mathf.Lerp (1.0f, 0.0f, elapsedTime / fadeTime);
-			//yield return null;
-		} while (elapsedTime < fadeTime);
+	private IEnumerator FadeMusic() {
+		while (music.volume > 0) {
+			music.volume -= Time.deltaTime / fadeTime;
+			yield return null;
+		}
+		//load
+		Application.LoadLevel("Scene1");
 	}
 }
