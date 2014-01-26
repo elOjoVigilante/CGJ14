@@ -4,6 +4,17 @@
 TagManager:
   tags:
   - 
+  - terrain
+  - Enemy
+  - ExplosionFX
+  - Bullet
+  - ground
+  - Obstacle
+  - HealthBar
+  - BombPickup
+  - coin
+  - playercam
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
