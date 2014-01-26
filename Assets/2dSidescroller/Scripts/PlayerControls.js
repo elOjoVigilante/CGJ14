@@ -99,14 +99,22 @@ if(Input.GetKey("q") && LooksSad){
    for (show in shows){
       show.GetComponent(showManager).show = true;
    }
-   GameObject.Find("Tint").GetComponent(Colorer).color = "red";   
+   GameObject.Find("Tint").GetComponent(Colorer).color = "magenta";   
 }
 
 if(Input.GetKey("r")){
    objs = GameObject.FindGameObjectsWithTag("Changeable");
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).normal;
+      obj.GetComponent(enemyFollow).sad = false;
    }    
+   
+   shows = GameObject.FindGameObjectsWithTag("Show");
+   for (show in shows){
+      show.GetComponent(showManager).show = false;
+   }
+ 
+   GameObject.Find("Tint").GetComponent(Colorer).color = "black"; 
 }
 
 //check to see if player is on terrain and can jump

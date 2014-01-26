@@ -13,4 +13,7 @@ function Update () {
    if(color == "red"){
       gameObject.renderer.material.color = Color.red;
    }
+   if(color == "magenta"){
+      gameObject.renderer.material.color = Color.magenta;
+   }
 }
