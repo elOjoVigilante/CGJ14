@@ -89,24 +89,42 @@ if(Input.GetKey("d")|| Input.GetKey("right")){
 rigidbody.velocity.x = 0.0;
 }
 
-if(Input.GetKey("q") && LooksSad){
+if(Input.GetKey("q") && LooksAngry){
    var objs = GameObject.FindGameObjectsWithTag("Changeable");
    for (obj in objs){
-      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
-      obj.GetComponent(enemyFollow).sad = true;
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).angry;
+      obj.GetComponent(enemyFollow).angry = true;
    }
    var shows = GameObject.FindGameObjectsWithTag("Show");
    for (show in shows){
       show.GetComponent(showManager).show = true;
    }
+   GameObject.Find("Tint").GetComponent(Colorer).color = "red";   
+}
+
+if(Input.GetKey("w") && LooksSad){
+   objs = GameObject.FindGameObjectsWithTag("Changeable");
+   for (obj in objs){
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
+      obj.GetComponent(enemyFollow).sad = true;
+   }
    GameObject.Find("Tint").GetComponent(Colorer).color = "magenta";   
+}
+
+if(Input.GetKey("e") && LooksCalm){
+   objs = GameObject.FindGameObjectsWithTag("Changeable");
+   for (obj in objs){
+      obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).calm;
+      obj.GetComponent(enemyFollow).calm = true;
+   }
+   GameObject.Find("Tint").GetComponent(Colorer).color = "blue";   
 }
 
 if(Input.GetKey("r")){
    objs = GameObject.FindGameObjectsWithTag("Changeable");
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).normal;
-      obj.GetComponent(enemyFollow).sad = false;
+      obj.GetComponent(enemyFollow).angry = false;
    }    
    
    shows = GameObject.FindGameObjectsWithTag("Show");

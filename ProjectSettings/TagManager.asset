@@ -17,6 +17,7 @@ TagManager:
   - Changeable
   - enemy
   - Show
+  - terrain2
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

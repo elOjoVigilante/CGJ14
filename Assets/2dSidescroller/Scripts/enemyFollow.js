@@ -4,6 +4,8 @@
 // Set Dead Zone to 0 if you want the camera to follow the player exactly.
 
 var sad:boolean = false;
+var angry:boolean = false;
+var calm: boolean = false;
 var moveRate:float = 0.2;
 var player:GameObject;
 
@@ -14,12 +16,18 @@ function Start () {
 
 function Update () {
 
-  if(sad){
-    var distance = player.transform.position.x - gameObject.transform.position.x;
-    if (distance < 0){
+  if(angry){
+    var distanceX = player.transform.position.x - gameObject.transform.position.x;
+    var distanceY = player.transform.position.y- gameObject.transform.position.y;
+    if (distanceX < 0){
        gameObject.transform.position.x += -moveRate;
-    }else{
+    }else if (distanceX > 0){
        gameObject.transform.position.x += moveRate;
+    }
+    if (distanceY < 0){
+       gameObject.transform.position.y += -moveRate/8;
+    }else if (distanceY > 0){
+       gameObject.transform.position.y += moveRate/8;
     }
   }     
 

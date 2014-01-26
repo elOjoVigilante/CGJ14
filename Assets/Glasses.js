@@ -6,7 +6,7 @@ function OnTriggerEnter(other : Collider){
       textGUI.guiText.text = "Oh, here they are...";
       textGUI.GetComponent(TextFader).Restart();
       var player = GameObject.Find("Player");
-      player.GetComponent(PlayerControls).LooksSad = true;
+      player.GetComponent(PlayerControls).LooksAngry = true;
       Destroy(gameObject);
    }
 }

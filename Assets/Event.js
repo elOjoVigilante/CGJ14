@@ -3,7 +3,7 @@
 function OnTriggerEnter(other : Collider){
    if(other.tag == "playercam"){
       var textGUI = GameObject.Find("Show Level");
-      textGUI.guiText.text = "PRESS Q MUTHAFUCKA";
+      textGUI.guiText.text = "Oh no! The way ahead is blocked!";
       textGUI.GetComponent(TextFader).Restart();
       Destroy(gameObject);
    }
