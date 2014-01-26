@@ -95,11 +95,11 @@ if(Input.GetKey("q") && LooksSad){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
       obj.GetComponent(enemyFollow).sad = true;
    }
-   objs = GameObject.FindGameObjectsWithTag("Show");
-   print("Here I am");
-   for (obj in objs){
-      obj.GetComponent(showManager).show = true;
+   var shows = GameObject.FindGameObjectsWithTag("Show");
+   for (show in shows){
+      show.GetComponent(showManager).show = true;
    }
+   GameObject.Find("Tint").GetComponent(Colorer).color = "red";   
 }
 
 if(Input.GetKey("r")){
