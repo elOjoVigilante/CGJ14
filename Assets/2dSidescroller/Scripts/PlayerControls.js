@@ -93,7 +93,7 @@ rigidbody.velocity.x = 0.0;
 if(Input.GetKey("q") && LooksSad){
    var objs = GameObject.FindGameObjectsWithTag("Changeable");
    var sadMusic = GameObject.Find("cama").GetComponent(AudioSource);
-   var currentMusic = GameObject.Find("Main Camera").GetComponent(AudioSource);
+   var currentMusic1 = GameObject.Find("Main Camera").GetComponent(AudioSource);
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
       obj.GetComponent(enemyFollow).sad = true;
@@ -104,15 +104,17 @@ if(Input.GetKey("q") && LooksSad){
    }
    GameObject.Find("Tint").GetComponent(Colorer).color = "magenta";  
    
-   if (currentMusic.clip != sadMusic.clip) {
-	   currentMusic.Stop();
-	   currentMusic.clip = sadMusic.clip;
-	   currentMusic.Play();
+   if (currentMusic1.clip != sadMusic.clip) {
+	   currentMusic1.Stop();
+	   currentMusic1.clip = sadMusic.clip;
+	   currentMusic1.Play();
    }
 }
 
 if(Input.GetKey("r")){
    objs = GameObject.FindGameObjectsWithTag("Changeable");
+   var normalMusic = GameObject.Find("chimneyLow").GetComponent(AudioSource);
+   var currentMusic2 = GameObject.Find("Main Camera").GetComponent(AudioSource);
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).normal;
       obj.GetComponent(enemyFollow).sad = false;
@@ -124,6 +126,12 @@ if(Input.GetKey("r")){
    }
  
    GameObject.Find("Tint").GetComponent(Colorer).color = "black"; 
+   
+   if (currentMusic2.clip != normalMusic.clip) {
+	   currentMusic2.Stop();
+	   currentMusic2.clip = normalMusic.clip;
+	   currentMusic2.Play();
+   }
 }
 
 //check to see if player is on terrain and can jump
