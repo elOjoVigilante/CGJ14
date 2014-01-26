@@ -110,7 +110,7 @@ GUIText:
   m_GameObject: {fileID: 13282992}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 2D SIDESCROLLER
+  m_Text: lucid dream
   m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
@@ -119,7 +119,7 @@ GUIText:
   m_Font: {fileID: 12800000, guid: 07e4c297fd3b1d54d92bb93dd35bb16e, type: 3}
   m_Material: {fileID: 0}
   m_FontSize: 100
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
@@ -1451,68 +1451,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 640188405}
   m_GameObject: {fileID: 445459540}
   m_Mesh: {fileID: 4300000, guid: 0eb69b172fa9ea54bbb9fc00f282971b, type: 3}
---- !u!1 &472453637
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 472453638}
-  - 132: {fileID: 472453640}
-  - 114: {fileID: 472453639}
-  m_Layer: 0
-  m_Name: Continue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &472453638
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 472453637}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0500000007, y: .100000001, z: 0}
-  m_LocalScale: {x: .100000001, y: .159999996, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1767842387}
---- !u!114 &472453639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 472453637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77f67044ec158534dac54b9022b576aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!132 &472453640
-GUIText:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 472453637}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Text: CONTINUE
-  m_Anchor: 3
-  m_Alignment: 0
-  m_PixelOffset: {x: 0, y: 0}
-  m_LineSpacing: 1
-  m_TabSize: 4
-  m_Font: {fileID: 12800000, guid: 07e4c297fd3b1d54d92bb93dd35bb16e, type: 3}
-  m_Material: {fileID: 0}
-  m_FontSize: 50
-  m_FontStyle: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_PixelCorrect: 0
-  m_RichText: 1
 --- !u!1 &478431183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,7 +2162,7 @@ GUIText:
   m_GameObject: {fileID: 686892366}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: PROJECT KIT
+  m_Text: A Caracas Game Jam 2014 game
   m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
@@ -3928,7 +3866,7 @@ GUIText:
   m_GameObject: {fileID: 1472329320}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: NEW GAME
+  m_Text: PRESS SPACE
   m_Anchor: 5
   m_Alignment: 2
   m_PixelOffset: {x: 0, y: 0}
@@ -4587,6 +4525,8 @@ GameObject:
   - 92: {fileID: 1703771945}
   - 124: {fileID: 1703771944}
   - 81: {fileID: 1703771943}
+  - 82: {fileID: 1703771949}
+  - 114: {fileID: 1703771948}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4655,6 +4595,75 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1703771948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703771942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b311fb4c05209414ea336223154e36ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &1703771949
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703771942}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: a5fa8204c6c3f6144b3a2250fa0f72f6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &1715438762
 Prefab:
   m_ObjectHideFlags: 0
@@ -4763,7 +4772,6 @@ Transform:
   m_Children:
   - {fileID: 13282997}
   - {fileID: 686892367}
-  - {fileID: 472453638}
   - {fileID: 1472329321}
   m_Father: {fileID: 0}
 --- !u!114 &1767842388

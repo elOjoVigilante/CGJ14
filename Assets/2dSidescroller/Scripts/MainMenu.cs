@@ -3,17 +3,36 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour
 {
-
-		// Use this for initialization
-		void Start ()
-		{
+	float fadeTime = 4.0f;
 	
+	GameObject gameCamera;
+	AudioSource music;
+	
+	// Use this for initialization
+	void Start () {
+		gameCamera = GameObject.Find ("Main Camera");
+		music = gameCamera.GetComponent<AudioSource> ();
+		music.enabled = true;
+		music.volume = 1.0f;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		//CAMBIAR POR EL CLIC EN PLAY?
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			//fade intro
+			StartCoroutine(FadeMusic());
 		}
+	}
 	
-		// Update is called once per frame
-		void Update ()
-		{
-	
+	//si alguien hace que esto funcione me avisa >_>
+	private IEnumerator FadeMusic() {
+		while (music.volume > 0) {
+			music.volume -= Time.deltaTime / fadeTime;
+			yield return null;
 		}
+		//load
+		Application.LoadLevel("Level 1");
+	}
 }
 
