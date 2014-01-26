@@ -89,8 +89,11 @@ if(Input.GetKey("d")|| Input.GetKey("right")){
 rigidbody.velocity.x = 0.0;
 }
 
+//lente purpura
 if(Input.GetKey("q") && LooksSad){
    var objs = GameObject.FindGameObjectsWithTag("Changeable");
+   var sadMusic = GameObject.Find("cama").GetComponent(AudioSource);
+   var currentMusic = GameObject.Find("Main Camera").GetComponent(AudioSource);
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
       obj.GetComponent(enemyFollow).sad = true;
@@ -99,7 +102,13 @@ if(Input.GetKey("q") && LooksSad){
    for (show in shows){
       show.GetComponent(showManager).show = true;
    }
-   GameObject.Find("Tint").GetComponent(Colorer).color = "magenta";   
+   GameObject.Find("Tint").GetComponent(Colorer).color = "magenta";  
+   
+   if (currentMusic.clip != sadMusic.clip) {
+	   currentMusic.Stop();
+	   currentMusic.clip = sadMusic.clip;
+	   currentMusic.Play();
+   }
 }
 
 if(Input.GetKey("r")){
