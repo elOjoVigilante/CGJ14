@@ -1,9 +1,10 @@
 ﻿#pragma strict
-
-function Start () {
-
-}
-
-function Update () {
-
+//This is attached to an object that can be picked up. It doesn't do anything unless it collides with something.
+function OnTriggerEnter(other : Collider){
+   if(other.tag == "playercam"){
+      var textGUI = GameObject.Find("Show Level");
+            textGUI.guiText.text = "Oh, here they are...";
+      textGUI.GetComponent(TextFader).Restart();
+      Destroy(gameObject);
+   }
 }

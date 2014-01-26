@@ -17,17 +17,17 @@ function Update () {
 counter += Time.deltaTime;
 
 //here we let the text start fading in after 0.5 seconds based on time divided by 2.
-if(counter > 0.5 && counter < 2.5 && fontFace.material.color.a < 1){
-	fontFace.material.color.a += Time.deltaTime/2;
-}
-//after 2.5 seconds, we want the text to fade out, then destroy itself so its no longer a part of the scene.
-//destroying the object is not required but after we destroy it, it will reduce the amount of draw calls by 1.
-if(counter > 2.5){
-	fontFace.material.color.a -= Time.deltaTime/2;
-	if(fontFace.material.color.a <= 0){
-		Destroy(gameObject);
-	}
-
+   if(counter > 0.5 && counter < 2.5 && fontFace.material.color.a < 1){
+	  fontFace.material.color.a += Time.deltaTime/2;
+   }
+  //after 2.5 seconds, we want the text to fade out, then destroy itself so its no longer a part of the scene.
+  //destroying the object is not required but after we destroy it, it will reduce the amount of draw calls by 1.
+   if(counter > 2.5){
+	  fontFace.material.color.a -= Time.deltaTime/2;
+   }
 }
 
+function Restart() {
+   counter = 0.0;
+   fontFace.material.color.a = 0.0;
 }
