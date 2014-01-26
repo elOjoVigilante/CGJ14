@@ -20,14 +20,14 @@ player = GameObject.Find("Player");
 }
 
 function Update () {
-//this is so the object follows the player
-transform.position.x = player.transform.position.x;
-//here is where we keep track of time so we can spawn enemies based on time.
-counter += Time.deltaTime;
-//if the counter's number is higher than the spawnRate set, it will spawn an enemy
-if(counter > spawnRate){
-Instantiate(enemy, Vector3(transform.position.x+spawnAhead,Random.Range(minHeight,maxHeight),0), Quaternion.Euler(0,180,0));
-//this resets the counter so spawning can repeat infinitely
-counter = 0.0;
-}
+  //this is so the object follows the player
+  transform.position.x = player.transform.position.x;
+  //here is where we keep track of time so we can spawn enemies based on time.
+  counter += Time.deltaTime;
+  //if the counter's number is higher than the spawnRate set, it will spawn an enemy
+  if(counter > spawnRate){
+     Instantiate(enemy, Vector3(transform.position.x+spawnAhead,Random.Range(minHeight,maxHeight),0), Quaternion.Euler(0,180,0));
+     //this resets the counter so spawning can repeat infinitely
+     counter = 0.0;
+  }
 }

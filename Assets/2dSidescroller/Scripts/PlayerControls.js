@@ -93,6 +93,12 @@ if(Input.GetKey("q") && LooksSad){
    var objs = GameObject.FindGameObjectsWithTag("Changeable");
    for (obj in objs){
       obj.GetComponent(SpriteRenderer).sprite = obj.GetComponent(Filterer).sad;
+      obj.GetComponent(enemyFollow).sad = true;
+   }
+   objs = GameObject.FindGameObjectsWithTag("Show");
+   print("Here I am");
+   for (obj in objs){
+      obj.GetComponent(showManager).show = true;
    }
 }
 
