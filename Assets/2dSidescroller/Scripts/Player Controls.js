@@ -88,7 +88,8 @@ rigidbody.velocity.x = 0.0;
 
 //check to see if player is on terrain and can jump
 if (Physics.Raycast (transform.position - Vector3(0,0.25,0), Vector3(0,-1,0), hit)) {
-	if(hit.transform.tag == "terrain" && hit.distance < 0.74 && Input.GetKey("space")){
+    var player:GameObject = GameObject.Find("Player");
+	if(hit.transform.tag == "terrain" && hit.distance < 0.74*player.renderer.bounds.size.y && Input.GetKey("space")){
 		rigidbody.velocity.y = jumpHeight;
 		//once jump counter hits a quarter of a second, it can play the sound again.
 		if(jumpCounter > 0.25){
