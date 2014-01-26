@@ -17,14 +17,21 @@ Platform assembly: E:\CGJ14\LucidDream_Data\Managed\Assembly-UnityScript-firstpa
 Loading E:\CGJ14\LucidDream_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: E:\CGJ14\LucidDream_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
 Loading E:\CGJ14\LucidDream_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.109 seconds
+- Completed reload, in  0.098 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found.
 <RI> Input initialized.
-UnloadTime: 0.786551 ms
+Platform assembly: E:\CGJ14\LucidDream_Data\Managed\Boo.Lang.dll (this message is harmless)
+UnloadTime: 1.042929 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 512.
-Total: 6.972664 ms (FindLiveObjects: 0.040198 ms CreateObjectMapping: 0.018759 ms MarkObjects: 0.107642 ms  DeleteObjects: 5.935987 ms)
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 1460.
+Total: 1.243028 ms (FindLiveObjects: 0.072804 ms CreateObjectMapping: 0.022779 ms MarkObjects: 0.198759 ms  DeleteObjects: 0.361340 ms)
+
+UnloadTime: 3.912213 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 146 unused Assets to reduce memory usage. Loaded Objects now: 282.
+Total: 19.343548 ms (FindLiveObjects: 0.038411 ms CreateObjectMapping: 0.038411 ms MarkObjects: 0.326501 ms  DeleteObjects: 18.259081 ms)
 
